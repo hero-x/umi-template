@@ -1,0 +1,21 @@
+
+.text-overflow(@int) when (@int >1) {
+  -webkit-box-orient: vertical;
+  box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: @int;
+}
+
+.text-overflow(@int) when (@int <=1) {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.fc {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

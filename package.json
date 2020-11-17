@@ -1,0 +1,41 @@
+{
+  "private": true,
+  "version": "1.0.0",
+  "scripts": {
+    "start": "PORT=3999 umi dev",
+    "test-build": "cross-env UMI_ENV=test-build umi dev",
+    "push-dev": "cross-env UMI_ENV=dev umi build",
+    "push-build": "cross-env UMI_ENV=build  umi build",
+    "analyze": "ANALYZE=1 cross-env UMI_ENV=build umi build",
+    "scp-dev": "scp -r ./dist/dev/*",
+    "scp-build": "scp -r ./dist/build/$npm_package_version/*"
+  },
+  "gitHooks": {
+    "pre-commit": "lint-staged"
+  },
+  "lint-staged": {
+    "*.{js,jsx,less,md,json}": [
+      "prettier --write"
+    ],
+    "*.ts?(x)": [
+      "prettier --parser=typescript --write"
+    ]
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^5.0.12",
+    "@umijs/preset-react": "1.x",
+    "@umijs/test": "^3.2.27",
+    "axios": "^0.21.0",
+    "lint-staged": "^10.0.7",
+    "lodash": "^4.17.20",
+    "moment": "^2.29.1",
+    "prettier": "^1.19.1",
+    "react": "^16.12.0",
+    "react-dom": "^16.12.0",
+    "umi": "^3.2.27",
+    "yorkie": "^2.0.0"
+  },
+  "devDependencies": {
+    "dva-logger": "^1.0.0"
+  }
+}
